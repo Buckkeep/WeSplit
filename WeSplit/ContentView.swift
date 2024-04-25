@@ -15,6 +15,9 @@ struct ContentView: View {
         
         NavigationStack{
             Form {
+                ForEach(1..<6) {
+                    Text("Row \($0)")
+                }
                 Section {
                     Text("Hello World!")
                     Text("Hello World!")
