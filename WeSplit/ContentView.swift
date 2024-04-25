@@ -17,7 +17,7 @@ struct ContentView: View {
         
         NavigationStack{
             Form {
-                Picker("Select your student", selection: $selectedStudent) {
+                Picker("Choose a Student", selection: $selectedStudent) {
                     ForEach(students, id:\.self) {
                         Text($0)
                     }
