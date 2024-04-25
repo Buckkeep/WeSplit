@@ -10,34 +10,32 @@ import SwiftUI
 struct ContentView: View {
     @State private var tapCount = 0
     @State private var name = ""
+    let students = ["Harry", "Ron", "Hermione", "Neville", "Luna", "Draco"]
+    @State private var selectedStudent = "Harry"
         
     var body: some View {
         
         NavigationStack{
             Form {
-                ForEach(1..<6) {
-                    Text("Row \($0)")
+                Picker("Select your student", selection: $selectedStudent) {
+                    ForEach(students, id:\.self) {
+                        Text($0)
+                    }
                 }
+
                 Section {
-                    Text("Hello World!")
-                    Text("Hello World!")
+                    Button("Tap count: \(tapCount)") {
+                        tapCount += 1
+                    }
                 }
-                Button("Tap count: \(tapCount)") {
-                    tapCount += 1
-                }
-                TextField("Enter your name", text: $name)
-                Text("Your name is \(name)!")
+                
                 Section {
-                    Text("Hello World!")
-                    Text("Hello World!")
-                    Text("Hello World!")
+                    TextField("Enter your name", text: $name)
+                    Text("Your name is \(name)!")
                 }
-                Section {
-                    Text("Hello World!")
-                    Text("Hello World!")
-                }
-            }.navigationTitle("SwiftUI")
-                .navigationBarTitleDisplayMode(.inline)
+                
+            }.navigationTitle("Select a Student")
+                .navigationBarTitleDisplayMode(.automatic)
         }
     }
 }
