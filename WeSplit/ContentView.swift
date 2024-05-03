@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var tipPercentage = 20
     @FocusState private var amountIsFocused: Bool
     
+    
 //    let tipPercentages = [10, 15, 20, 25, 0]
     
     var total: Double {
@@ -65,6 +66,7 @@ struct ContentView: View {
                 
                 Section("Total bill including tip:") {
                     Text(total, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundStyle(tipPercentage == 0 ? .red : .primary)
                 }
             }
             .navigationTitle("WeSplit")
